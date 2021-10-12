@@ -20,7 +20,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Sucre",
-                "quantite" : 30,
+                "quantity" : 30,
                 "unit" : "grammes"
             },
             {
@@ -52,7 +52,7 @@ const recipes = [
             },
             {
                 "ingredient" : "Carotte",
-                "quantite" : 1
+                "quantity" : 1
             },
             {
                 "ingredient" : "Citron Vert",
@@ -662,7 +662,7 @@ const recipes = [
                 "quantity": 1
             }
         ],
-        "time": 0,
+        "time": 10,
         "description":"Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
         "appliance": "Blender",
         "ustensils":["couteau", "verres", "presse citron"]
@@ -1681,7 +1681,7 @@ const recipes = [
                 "unit": "cuillères à soupe"
             }
         ],
-        "time": 0,
+        "time": 10,
         "description":"Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir",
         "appliance": "Blender",
         "ustensils":["couteau", "verres"]

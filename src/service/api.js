@@ -1,6 +1,17 @@
 import recipes from './recipies.js'
+import Card from '../class/Cards.js'
 
-let getIngredients = () => {
+// const ingredients = [...new Set(recipes.map(recipe => recipe.ingredients.map(ingredient => ingredient.ingredient)))]
+
+let getRecipesCard = () => {
+    let cards = []
+    recipes.map(recipe => {
+        cards.push(new Card(recipe.name, recipe.time, recipe.ingredients, recipe.description))
+    })
+    return cards
+}
+
+let getAllIngredients = () => {
     let ingredients = []
     for (let i = 0; i < recipes.length; i++) {
         let recipe = recipes[i];
@@ -25,7 +36,7 @@ let getIngredients = () => {
     return ingredients
 }
 
-let getAppliances = () => {
+let getAllAppliances = () => {
     let appliances = []
     for (let i = 0; i < recipes.length; i++) {
         let appliance = recipes[i].appliance
@@ -46,7 +57,7 @@ let getAppliances = () => {
     return appliances
 }
 
-let getUstensils = () => {
+let getAllUstensils = () => {
     let ustensils = []
     for (let i = 0; i < recipes.length; i++) {
         let ustensilsArray = recipes[i].ustensils
@@ -71,4 +82,7 @@ let getUstensils = () => {
     return ustensils
 }
 
-export {getIngredients, getAppliances, getUstensils}
+
+// TODO: getSelectByFilter (créer la class Select)
+
+export {getRecipesCard, getAllIngredients, getAllAppliances, getAllUstensils}
