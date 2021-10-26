@@ -1,9 +1,11 @@
 export default class Card {
-    constructor(title, time, ingredients, description){
+    constructor(title, time, ingredients, description, appliance, ustensils){
         this.title = title
         this.time = time
         this.ingredients = ingredients
         this.description = description
+        this.appliance = appliance
+        this.ustensils = ustensils.map(ustensil => ustensil.toLowerCase())
     }
 
     formateUnit = (unit) => {
