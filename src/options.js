@@ -21,7 +21,7 @@ let optionsArray = []
 let initOptionsMenuEvent = () => {
     const optionsMenu = document.querySelectorAll('.filter__custom-option')
     optionsMenu.forEach(optionMenu => optionMenu.addEventListener('click', () => {
-        const optionValue = optionMenu.innerText;
+        const optionValue = optionMenu.innerText.toLowerCase();
         const optionColor = optionMenu.getAttribute('data-color');
         const optionType = optionMenu.parentNode.previousElementSibling.getAttribute('data-value');
         if(checkIfOptionIsNotPresent(optionsArray, [optionValue, optionColor, optionType])){
