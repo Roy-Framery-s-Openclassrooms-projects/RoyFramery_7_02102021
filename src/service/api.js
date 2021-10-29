@@ -1,21 +1,6 @@
 import recipes from './recipies.js'
 import Card from '../class/Card.js'
 
-// let getAllIngredient = (search) => {
-//     const ingredients = [...new Set(
-//         recipes
-//         .map(recipe => recipe.ingredients
-//             .map(ingredient => ingredient.ingredient.toLowerCase()))
-//             .flat()
-//             .sort()
-//             )
-//         ]
-//         if (search) {
-//             return ingredients.filter((ingredient) => ingredient.contains(search))
-//         }
-//         return ingredients
-// }
-
 let getRecipesCard = (filters) => {
     let cards = []
     recipes.map(recipe => {

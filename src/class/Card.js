@@ -1,38 +1,38 @@
 export default class Card {
     constructor(title, time, ingredients, description, appliance, ustensils){
-        this.title = title
-        this.time = time
-        this.ingredients = ingredients
-        this.description = description
-        this.appliance = appliance
-        this.ustensils = ustensils.map(ustensil => ustensil.toLowerCase())
+        this.title = title;
+        this.time = time;
+        this.ingredients = ingredients;
+        this.description = description;
+        this.appliance = appliance;
+        this.ustensils = ustensils.map(ustensil => ustensil.toLowerCase());
     }
 
-    formateUnit = (unit) => {
+    formateUnit(unit) {
         switch (unit) {
             case 'grammes':
-                return 'g'
+                return 'g';
             case 'ml':
             case 'cl':
             case 'kg':
-                return `${unit}`
+                return `${unit}`;
             default:
-                return ` ${unit}`
+                return ` ${unit}`;
         }
     }
 
-    createIngredientsList = (ingredients) => {
-        let ingredientList = ``
+    createIngredientsList(ingredients) {
+        let ingredientList = ``;
         ingredients.map(ingredient => {
-            if (ingredient['quantity'] && !ingredient['unit']) {
-                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}:</span> ${ingredient.quantity}</li>`
-            } else if (ingredient['unit']) {
-                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}:</span> ${ingredient.quantity}${this.formateUnit(ingredient.unit)}</li>`
+            if (ingredient.quantity && !ingredient.unit) {
+                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}:</span> ${ingredient.quantity}</li>`;
+            } else if (ingredient.unit) {
+                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}:</span> ${ingredient.quantity}${this.formateUnit(ingredient.unit)}</li>`;
             } else  {
-                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}</span></li>`
+                ingredientList += `<li class="card__ingredient"><span class="card__ingredient--bold">${ingredient.ingredient}</span></li>`;
             }
-        })
-        return ingredientList
+        });
+        return ingredientList;
     }
 
     get createRecipeCard() {
@@ -56,7 +56,7 @@ export default class Card {
             </a>
         </article>
         
-        `
+        `;
     }
 
 

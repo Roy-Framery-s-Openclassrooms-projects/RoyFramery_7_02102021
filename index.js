@@ -22,8 +22,8 @@ dom.filter.insertAdjacentHTML('beforeend', ingredientsSelect.createSelectElement
 initSelectEvent()
 
 const searchBar = document.querySelector('.search__input')
-searchBar.addEventListener('input', () => {
-    if(searchBar.value.length > 2) {
+searchBar.addEventListener('input', (e) => {
+    if(e.target.value.length > 2) {
         let searchCards = getRecipesCardOnMainSearch(searchBar.value.toLowerCase());
         console.log(searchCards)
         if (searchCards != undefined) {
