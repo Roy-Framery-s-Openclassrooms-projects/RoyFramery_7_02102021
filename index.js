@@ -25,10 +25,7 @@ const searchBar = document.querySelector('.search__input')
 searchBar.addEventListener('input', (e) => {
     if(e.target.value.length > 2) {
         let searchCards = getRecipesCardOnMainSearch(searchBar.value.toLowerCase());
-        console.log(searchCards)
-        if (searchCards != undefined) {
-            displayCard(searchCards, dom.cardsSection)
-        } else {displayCard(searchCards = [], dom.cardsSection)}
+        displayCard(searchCards, dom.cardsSection)
     } else {
         displayCard(cards, dom.cardsSection)
     }
