@@ -21,10 +21,11 @@ dom.filter.insertAdjacentHTML('beforeend', ingredientsSelect.createSelectElement
 
 initSelectEvent()
 
+// create event on main search bar
 const searchBar = document.querySelector('.search__input')
 searchBar.addEventListener('input', (e) => {
     if(e.target.value.length > 2) {
-        let searchCards = getRecipesCardOnMainSearch(searchBar.value.toLowerCase());
+        let searchCards = getRecipesCardOnMainSearch(searchBar.value);
         displayCard(searchCards, dom.cardsSection)
     } else {
         displayCard(cards, dom.cardsSection)
