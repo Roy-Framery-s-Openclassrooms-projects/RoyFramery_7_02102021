@@ -20,10 +20,10 @@
 
 __*Les petits plats*__ is the seventh project I made during this training. As a freelancer, I had a mission for the society "**Les petits plats**" as a Front-end Developper for 3 months. The goal 🎯 of this project, in addition to integrating the mockup, was to implement the "**most performing**" search function and to make an investigation form of the functionality to explain my choice. 
 
-For this purpose, I had at my disposal [data](./src/service/recipes.js) that contain 50 recipes, the description of [search use cases](./readMe/Cas_d’utilisation_#03_Filtrer_les_recettes_dans_l’interface_utilisateur.pdf), the [mockup](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK/UI-Design-Les-Petits-Plats-FR) and an example of [investigation form of the functionality](./readMe/Fiche_d’investigation_fonctionnalité.pdf).
+For this purpose, I had at my disposal [data](./src/service/recipes.js) that contain 50 recipes, the description of [search use cases](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/Cas_d%E2%80%99utilisation_%2303_Filtrer_les_recettes_dans_l%E2%80%99interface_utilisateur.pdf), the [mockup](https://www.figma.com/file/xqeE1ZKlHUWi2Efo8r73NK/UI-Design-Les-Petits-Plats-FR) and an example of [investigation form of the functionality](./readMe/Fiche_d’investigation_fonctionnalité.pdf).
 
 ### The competition begins
-For this project, it was suggested to make a comparison between a native loop (while, for,...) and a functional loop (forEach, filter, map, ...). So I decided to made an "optimized" algo for each [native loop]() and each [functional loop]() and compared them to make the best and the worst choice.
+For this project, it was suggested to make a comparison between a native loop (while, for,...) and a functional loop (forEach, filter, map, ...). So I decided to made an "optimized" algo for each [native loop](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/boucles_natives.js) and each [functional loop](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/boucles_fonctionnelles.js) and compared them to make the best and the worst choice.
 
 
 ### And the winner is ...
