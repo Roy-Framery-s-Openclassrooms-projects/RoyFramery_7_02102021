@@ -29,7 +29,7 @@ For this project, it was suggested to make a comparison between a native loop (w
 ### And the winner is
 > 🏅 you can find here my final choice and why : 🏅
 > - [JavaScript Benchmark](https://jsben.ch/akyYd) for the search function ;
-> - [investigation form of the functionality](./readme/fiche_d_investigation_de_fonctionnalité.pdf).
+> - [investigation form of the functionality](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/fiche_d_investigation_de_fonctionnalit%C3%A9.pdf).
 >
 
 [Back to the top](#les-petits-plats)
