@@ -23,6 +23,6 @@ let getRecipesCardOnMainSearch = (filter) => {
     }
     return cards;
 
-}
+};
 
 export default getRecipesCardOnMainSearch
