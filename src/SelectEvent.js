@@ -1,5 +1,5 @@
 import Select from './class/Select.js';
-import {displayOptionsInCustomMenu, initOptionsMenuEvent} from './options.js'
+import {displayOptionsInCustomMenu, initOptionsMenuEvent} from './options.js';
 
 let initSelectEvent = () => {
 
@@ -11,29 +11,26 @@ let initSelectEvent = () => {
         const customMenuElement = button.nextElementSibling;
     
         // To display the options list 
-        displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'))
+        displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'));
     
         // Init event when user type in the seach bar of the select
         button.addEventListener('input', () => {
             if (button.value.length > 2) {
                 // Will return options witch match with the input's value
-                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'),  button.value.toLowerCase())
+                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'),  button.value.toLowerCase());
                 
                 // init event for the new list of options
-                initOptionsMenuEvent()
+                initOptionsMenuEvent();
             } else {
                 // To get the complete list of options if button.value.length =< 2
-                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'))
+                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'));
     
                 // init event for the new list of options
-                initOptionsMenuEvent()
+                initOptionsMenuEvent();
             }
-        })
-        initOptionsMenuEvent()
-        // initOptionsMenuEvent(button.getAttribute('data-value'), customMenuElement)
-    }))
-}
+        });
+        initOptionsMenuEvent();
+    }));
+};
 
-export default initSelectEvent
-
-
+export default initSelectEvent;

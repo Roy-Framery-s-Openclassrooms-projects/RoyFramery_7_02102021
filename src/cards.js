@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {Array} cards array of instanciate Card class of recipes 
+ * @param {HTMLElement} cardsSection Dom Element that contain the recipes cards
+ */
 let displayCard = (cards, cardsSection) => {
     cardsSection.innerHTML = '';
     if (cards == 0) {
@@ -10,13 +15,13 @@ let displayCard = (cards, cardsSection) => {
             <p class="cards__no-recipes-text">Aucune recette ne correspond à votre critère… vous pouvez
             chercher « limonade de Coco », « thon », etc.</p>
         </div>
-        `)
-        cardsSection.style.gridTemplateColumns = '1fr'
+        `);
+        cardsSection.style.gridTemplateColumns = '1fr';
     } 
     else {
         cards.map(card => cardsSection.insertAdjacentHTML('beforeend', card.createRecipeCard));
-        cardsSection.style.gridTemplateColumns = '1fr 1fr 1fr'
+        cardsSection.style.gridTemplateColumns = '1fr 1fr 1fr';
     }
-}
+};
 
-export default displayCard
+export default displayCard;

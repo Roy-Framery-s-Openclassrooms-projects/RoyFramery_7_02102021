@@ -1,4 +1,17 @@
-export default class Card {
+/**
+ * Class to create a Card
+ */
+
+ export default class Card {
+    /**
+     * 
+     * @param {string} title the name of the recipe
+     * @param {number} time the cooking time
+     * @param {Array{}} ingredients 
+     * @param {String} description 
+     * @param {string} appliance 
+     * @param {Array.<string>} ustensils 
+     */
     constructor(title, time, ingredients, description, appliance, ustensils){
         this.title = title;
         this.time = time;
@@ -8,6 +21,11 @@ export default class Card {
         this.ustensils = ustensils.map(ustensil => ustensil.toLowerCase());
     }
 
+    /**
+     * 
+     * @param {string} unit 
+     * @returns a formated string
+     */
     formateUnit(unit) {
         switch (unit) {
             case 'grammes':
@@ -21,6 +39,11 @@ export default class Card {
         }
     }
 
+    /**
+     * 
+     * @param {Array{}} ingredients 
+     * @returns a string that contain Dom Element for the list of ingredient
+     */
     createIngredientsList(ingredients) {
         let ingredientList = ``;
         ingredients.map(ingredient => {
@@ -35,6 +58,10 @@ export default class Card {
         return ingredientList;
     }
 
+    /**
+     * To construct the Dom Element of a Card
+     * @return A string that correspond to a Dom Element that cotain the Card
+     */
     get createRecipeCard() {
         return `
         <article class="card">
@@ -58,6 +85,4 @@ export default class Card {
         
         `;
     }
-
-
 }
