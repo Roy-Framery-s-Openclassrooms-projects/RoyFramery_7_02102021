@@ -9,7 +9,7 @@
 ## Table of Contents
   - [Description](#description)
     - [The competition begins](#the-competition-begins)
-    - [And the winner is ...](#and-the-winner-is-...)
+    - [And the winner is ...](#and-the-winner-is)
   - [Tech](#tech)
   - [Installation](#installation)
   - [Author info](#author-info)
@@ -26,7 +26,7 @@ For this purpose, I had at my disposal [data](./src/service/recipes.js) that con
 For this project, it was suggested to make a comparison between a native loop (while, for,...) and a functional loop (forEach, filter, map, ...). So I decided to made an "optimized" algo for each [native loop](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/boucles_natives.js) and each [functional loop](https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021/blob/dev-optimized/readMe/boucles_fonctionnelles.js) and compared them to make the best and the worst choice.
 
 
-### And the winner is ...
+### And the winner is
 > 🏅 you can find here my final choice and why : 🏅
 > - [JavaScript Benchmark](https://jsben.ch/akyYd) for the search function ;
 > - [investigation form of the functionality](./readme/fiche_d_investigation_de_fonctionnalité.pdf).
