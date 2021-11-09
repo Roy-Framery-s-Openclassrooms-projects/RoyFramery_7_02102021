@@ -41,10 +41,10 @@ let getRecipesCardOnMainSearch = (filter) => {
     // To create a card for each recipes
     let cards = [];
     filtredRecipes.map(recipe => {
-        cards.push(new Card(recipe.name, recipe.time, recipe.ingredients, recipe.description, recipe.appliance, recipe.ustensils))
-    })
+        cards.push(new Card(recipe.name, recipe.time, recipe.ingredients, recipe.description, recipe.appliance, recipe.ustensils));
+    });
     return cards;
 
 };
 
-export default getRecipesCardOnMainSearch
+export default getRecipesCardOnMainSearch;
