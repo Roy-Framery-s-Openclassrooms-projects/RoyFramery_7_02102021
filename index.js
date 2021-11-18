@@ -1,7 +1,7 @@
 import { initSearchBar } from './src/searchBar.js';
 import displayCards from "./src/displayCards.js";
 import recipesData from "./src/service/recipes.js";
-import Select from './src/class/select.js';
+import Select from './src/class/Select.js';
 import { addOptionsToEachSelect, initOptionsEvent } from "./src/options.js";
 import { initSelectModal, initInputSelectEvent } from './src/selectEvent.js';
 
