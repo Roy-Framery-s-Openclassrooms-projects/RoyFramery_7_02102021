@@ -1,7 +1,7 @@
 /**
  * Class to create a Tag
  */
- export default class Tag {
+export default class Tag {
     /**
      * 
      * @param {string} tagName 

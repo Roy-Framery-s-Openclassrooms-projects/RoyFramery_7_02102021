@@ -5,15 +5,15 @@
  export default class Card {
     /**
      * 
-     * @param {string} title the name of the recipe
+     * @param {string} name the name of the recipe
      * @param {number} time the cooking time
      * @param {Array{}} ingredients 
      * @param {String} description 
      * @param {string} appliance 
      * @param {Array.<string>} ustensils 
      */
-    constructor(title, time, ingredients, description, appliance, ustensils){
-        this.title = title;
+    constructor(name, time, ingredients, description, appliance, ustensils){
+        this.name = name;
         this.time = time;
         this.ingredients = ingredients;
         this.description = description;
@@ -69,7 +69,7 @@
                 <div class="card__thumb"></div>
                 <div class="card__body">
                     <div class="card__head">
-                        <h2 class="card__title">${this.title}</h2>
+                        <h2 class="card__title">${this.name}</h2>
                         <div class="card__time">
                             <i class="far fa-clock"></i>
                             <p class="card__minutes">${this.time} min</p>

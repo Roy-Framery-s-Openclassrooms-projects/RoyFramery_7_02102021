@@ -141,15 +141,14 @@ export default class Select {
      * @param {string} filter the value that the user type in the input
      * @returns 
      */
-    static getOptionsByButtonDataValue = (value, customMenu, filter) => {
-        customMenu.innerHTML = '';
+    static getOptionsByButtonDataValue = (recipes, value, filter) => {
         switch (value) {
             case 'Ustensiles':
-                return getAllUstensils(filter);
+                return getAllUstensils(recipes, filter);
             case 'Appareil':
-                return getAllAppliances(filter);
+                return getAllAppliances(recipes, filter);
             case 'Ingrédients':
-                return getAllIngredients(filter);
+                return getAllIngredients(recipes, filter);
     
             default:
                 break;

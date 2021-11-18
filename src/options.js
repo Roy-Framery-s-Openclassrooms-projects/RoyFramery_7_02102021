@@ -1,62 +1,70 @@
 import Select from './class/Select.js';
-import {displayTags, initTagsEvent} from './tags.js';
-import {getRecipesCard} from './service/api.js';
-import displayCard from './cards.js';
+import { displayTag, initTagsEvent } from './tags.js';
+import recipesData from './service/recipes.js';
+import { getFiltredRecipes } from './service/api.js';
+import displayCards from './displayCards.js';
+import { initInputSelectEvent } from "./selectEvent.js";
 
-const dom = {
-    cardsSection : document.querySelector('.cards')
+let insertOptionsToCustomList = (options, customMenu, color) => {
+    customMenu.innerHTML = '';
+    customMenu.insertAdjacentHTML('beforeend', Select.getOptionsList(options, color));
 };
 
-/**
- * 
- * @param {HTMLElement} customMenuElement The list of options <ul>...</ul>
- * @param {HTMLElement} SelectInput The input selected
- * @param {string} color the color of the select
- * @param {string} filter Value that user type in the select's input
- */
-let displayOptionsInCustomMenu = (customMenuElement, SelectInput, color, filter) => {
-    customMenuElement.innerHTML = '';
-    let optionValues;
-    if (filter) {
-        optionValues = Select.getOptionsByButtonDataValue(SelectInput.getAttribute('data-value'), customMenuElement, SelectInput.value.toLowerCase());
-    } else {
-        optionValues = Select.getOptionsByButtonDataValue(SelectInput.getAttribute('data-value'), customMenuElement);
-    }
-    customMenuElement.insertAdjacentHTML('beforeend', Select.getOptionsList(optionValues, color));
+let addOptionsToEachSelect = (recipesData) => {
+    const selectButtons = document.querySelectorAll('.filter__select');
+    selectButtons.forEach(select => {
+        const options = Select.getOptionsByButtonDataValue(recipesData, select.value ? select.value : select.getAttribute('data-value'));
+        insertOptionsToCustomList(options, select.nextElementSibling, select.getAttribute('data-color'));
+    });
 };
+
 
 let optionsArray = [];
-let initOptionsMenuEvent = () => {
-    const optionsMenu = document.querySelectorAll('.filter__custom-option');
-    optionsMenu.forEach(optionMenu => optionMenu.addEventListener('click', () => {
-        const optionValue = optionMenu.innerText.toLowerCase();
-        const optionColor = optionMenu.getAttribute('data-color');
-        const optionType = optionMenu.parentNode.previousElementSibling.getAttribute('data-value');
+let initOptionsEvent = () => {
+    const options = document.querySelectorAll('.filter__custom-option');
+    options.forEach(option => option.addEventListener('click', () => {
+        const optionValue = option.innerHTML;
+        const optionColor = option.getAttribute('data-color');
+        const input = option.parentNode.previousElementSibling;
+        const optionType = input.getAttribute('data-value') ? input.getAttribute('data-value') : input.getAttribute('value') ;
+
+        // To check if the option is already present in the array
         if(checkIfOptionIsNotPresent(optionsArray, [optionValue, optionColor, optionType])){
             optionsArray.push([optionValue, optionColor, optionType]);
         }
-        // Display tags
-        const tagsSection = document.querySelector('.tags');
-        displayTags(optionsArray, tagsSection);
-        initTagsEvent(optionsArray, tagsSection);
 
-        // To close options list
-        const parentNode = optionMenu.parentNode;
-        const filterContainer = parentNode.parentNode;
+        // To display tags on page
+        displayTag(optionsArray);
+        
+        // to display recipes
+        const searchValue = document.querySelector('.search__input').value;
+        const recipes = getFiltredRecipes(recipesData, optionsArray, searchValue);
+        displayCards(recipes);
+        
+        // to init close button for each tag
+        initTagsEvent(optionsArray);
+
+        // to close select
+        const optionParentNode = option.parentNode;
+        const filterContainer = optionParentNode.parentNode;
         const filterArrow = filterContainer.firstChild.nextElementSibling;
-        const InputSelect = parentNode.previousElementSibling;
-        Select.closeSelectMenu(parentNode, filterContainer, filterArrow);
+        const InputSelect = optionParentNode.previousElementSibling;
+        Select.closeSelectMenu(optionParentNode, filterContainer, filterArrow);
         Select.changeInputTypeInButton(InputSelect);
+        
+        // To update options in each select
+        addOptionsToEachSelect(recipes);
+        
+        // to init options
+        initOptionsEvent();
 
-        // to display all options
-        displayOptionsInCustomMenu(optionMenu.parentNode, optionMenu.parentNode.previousElementSibling, optionMenu.parentNode.previousElementSibling.getAttribute('data-color'));
-        initOptionsMenuEvent();
-        const cards = getRecipesCard(optionsArray);
-        displayCard(cards, dom.cardsSection);
+        // To init input search of select
+        initInputSelectEvent(recipes);
     }));
 };
 
 let checkIfOptionIsNotPresent = (optionsArray, option) => {
     return JSON.stringify(optionsArray).indexOf(JSON.stringify(option)) == -1;
-}
-export {displayOptionsInCustomMenu, initOptionsMenuEvent, checkIfOptionIsNotPresent};
+};
+
+export { addOptionsToEachSelect, insertOptionsToCustomList, initOptionsEvent };

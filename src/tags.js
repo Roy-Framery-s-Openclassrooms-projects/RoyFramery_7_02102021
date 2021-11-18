@@ -1,46 +1,49 @@
 import Tag from './class/Tag.js';
-import displayCard from './cards.js'
-import {getRecipesCard} from './service/api.js';
-
-const dom = {
-    cardsSection : document.querySelector('.cards')
-}
+import { getFiltredRecipes } from './service/api.js';
+import displayCards from './displayCards.js';
+import recipesData from './service/recipes.js';
+import { addOptionsToEachSelect, initOptionsEvent } from './options.js';
 
 /**
  * 
- * @param {object.<[[string, string, string]]>} optionsArray [name of the filter, the color of the tag, the type of the filter]
- * @param {HTMLElement} tagsSection the dom element that contain tags
+ * @param {object[[string, string, string]]} optionsArray [option's value, color (danger, primary, success), type of the value(ustensil, appliance or ingredient)]
  */
-let displayTags = (optionsArray, tagsSection) => {
-    tagsSection.innerHTML = ''
+let displayTag = (optionsArray) => {
+    const tagsSection = document.querySelector('.tags');
+    tagsSection.innerHTML = '';
     optionsArray.map(option => {
-        tagsSection.innerHTML += new Tag(option[0], option[1]).createTag
-    }) 
-}
-
-/**
- * 
- * @param {object.<[[string, string, string]]>} optionsArray [name of the filter, the color of the tag, the type of the filter]
- * @param {HTMLElement} tagsSection the dom element that contain tags
- */
-let initTagsEvent = (optionsArray, tagsSection) => {
-    // if (optionsArray.length === 0) {
-    //     displayCard(getRecipesCard(), dom.cardsSection)
-    // } else {
-        const tagsCloseButton = document.querySelectorAll('.tags__close');
-        tagsCloseButton.forEach(tagCloseButton => tagCloseButton.addEventListener('click', () => {
-            // To remove the tag
-            optionsArray.splice(Array.from(tagsCloseButton).indexOf(tagCloseButton), 1);
-
-            // to display the new list of tags and reset the init
-            displayTags(optionsArray, tagsSection);
-            initTagsEvent(optionsArray, tagsSection);
-
-            // To display the cards after the modification of the list of tags
-            displayCard(getRecipesCard(optionsArray), dom.cardsSection);
-        }));
-    // }
+        const optionValue = option[0];
+        const optionColor = option[1];
+        tagsSection.insertAdjacentHTML('beforeend', new Tag(optionValue, optionColor).createTag);
+    });
 };
 
+/**
+ * function that allows to delete the tags
+ * @param {object[[string, string, string]]} optionsArray [option's value, color (danger, primary, success), type of the value(ustensil, appliance or ingredient)]
+ */
+let initTagsEvent = (optionsArray) => {
+    const tagsCloseButton = document.querySelectorAll('.tags__close');
+    tagsCloseButton.forEach(tagCloseButton => tagCloseButton.addEventListener('click', () => {
+        // To remove the tag
+        optionsArray.splice(Array.from(tagsCloseButton).indexOf(tagCloseButton), 1);
 
-export {displayTags, initTagsEvent};
+        // To get new recipes
+        const searchValue = document.querySelector('.search__input').value;
+        let filtredRecipes = getFiltredRecipes(recipesData, optionsArray, searchValue);
+
+        if (optionsArray == 0) {
+            filtredRecipes = getFiltredRecipes(recipesData, optionsArray, searchValue);
+            addOptionsToEachSelect(filtredRecipes);
+            initOptionsEvent();
+        }
+        // to display the new list of tags and reset the init
+        displayTag(optionsArray);
+        initTagsEvent(optionsArray, filtredRecipes);
+
+        // to display recipes
+        displayCards(filtredRecipes);
+    }));
+};
+
+export {displayTag, initTagsEvent};
