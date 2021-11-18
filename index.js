@@ -1,32 +1,28 @@
-import {getRecipesCard} from './src/service/api.js';
-import Select from './src/class/Select.js';
-import initSelectEvent from './src/SelectEvent.js';
-import displayCard from './src/cards.js';
-import getRecipesCardOnMainSearch from './src/service/searchBar.js';
+import { initSearchBar } from './src/searchBar.js';
+import displayCards from "./src/displayCards.js";
+import recipesData from "./src/service/recipes.js";
+import Select from './src/class/select.js';
+import { addOptionsToEachSelect, initOptionsEvent } from "./src/options.js";
+import { initSelectModal, initInputSelectEvent } from './src/selectEvent.js';
 
-const dom = {
-    filter : document.querySelector('.filter'),
-    cardsSection : document.querySelector('.cards')
-}
+displayCards(recipesData);
 
-// To display recipes' cards
-const cards = getRecipesCard();
-displayCard(cards, dom.cardsSection);
+// to init event on the main search bar
+initSearchBar(recipesData);
 
-// To display select elements
+// To display select elements in filter section
+const filter = document.querySelector('.filter');
 const ingredientsSelect = new Select('Ingrédients', 'primary');
 const appliancesSelect = new Select('Appareil', 'success');
 const ustensilssSelect = new Select('Ustensiles', 'danger');
-dom.filter.insertAdjacentHTML('beforeend', ingredientsSelect.createSelectElement + appliancesSelect.createSelectElement + ustensilssSelect.createSelectElement);
+filter.insertAdjacentHTML('beforeend', ingredientsSelect.createSelectElement + appliancesSelect.createSelectElement + ustensilssSelect.createSelectElement);
 
-initSelectEvent();
+// to add options to each select custom list
+addOptionsToEachSelect(recipesData);
 
-const searchBar = document.querySelector('.search__input');
-searchBar.addEventListener('input', (e) => {
-    if(e.target.value.length > 2) {
-        let searchCards = getRecipesCardOnMainSearch(searchBar.value.toLowerCase());
-        displayCard(searchCards, dom.cardsSection);
-    } else {
-        displayCard(cards, dom.cardsSection);
-    }
-});
+// To init the search on each select's input text
+initInputSelectEvent(recipesData);
+
+initSelectModal();
+
+initOptionsEvent();

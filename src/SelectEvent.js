@@ -1,36 +1,42 @@
 import Select from './class/Select.js';
-import {displayOptionsInCustomMenu, initOptionsMenuEvent} from './options.js';
+import { insertOptionsToCustomList, initOptionsEvent } from './options.js';
 
-let initSelectEvent = () => {
-
-    // Select init event
+/**
+ * function that init event for each select to open or close the custom list
+ */
+let initSelectModal = () => {
     const selectButtons = document.querySelectorAll('.filter__select');
-    selectButtons.forEach(button => button.addEventListener('click', () => {
-        Select.initModalEvent(button);
-        // to get the container of the list on actual button
-        const customMenuElement = button.nextElementSibling;
-    
-        // To display the options list 
-        displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'));
-    
-        // Init event when user type in the seach bar of the select
-        button.addEventListener('input', () => {
-            if (button.value.length > 2) {
-                // Will return options witch match with the input's value
-                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'),  button.value.toLowerCase());
-                
-                // init event for the new list of options
-                initOptionsMenuEvent();
-            } else {
-                // To get the complete list of options if button.value.length =< 2
-                displayOptionsInCustomMenu(customMenuElement, button, button.getAttribute('data-color'));
-    
-                // init event for the new list of options
-                initOptionsMenuEvent();
-            }
+    selectButtons.forEach(select => {
+        select.addEventListener('click', () => {
+            Select.initModalEvent(select);
         });
-        initOptionsMenuEvent();
-    }));
+    });
 };
 
-export default initSelectEvent;
+/**
+ * function that searches for options based on the options in the list
+ * @param {object[]} recipes 
+ */
+let initInputSelectEvent = (recipes) => {
+    // to get all select
+    const selectButtons = document.querySelectorAll('.filter__select');
+    selectButtons.forEach(select => {
+        select.addEventListener('input', () => {
+            let options;
+            const customMenu = select.nextElementSibling;
+            const selectDataValue = select.getAttribute('data-value');
+            const selectDataColor = select.getAttribute('data-color');
+            if (select.value.length > 0) {
+                options = Select.getOptionsByButtonDataValue(recipes, selectDataValue, select.value);
+
+                insertOptionsToCustomList(options, customMenu, selectDataColor);
+            } else {
+                options = Select.getOptionsByButtonDataValue(recipes, selectDataValue);
+                insertOptionsToCustomList(options, customMenu, selectDataColor);
+            }
+            initOptionsEvent();
+        });
+    });
+    
+};
+export {initSelectModal, initInputSelectEvent};
