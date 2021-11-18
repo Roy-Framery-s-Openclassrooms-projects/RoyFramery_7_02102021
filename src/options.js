@@ -3,7 +3,7 @@ import { displayTag, initTagsEvent } from './tags.js';
 import recipesData from './service/recipes.js';
 import { getFiltredRecipes } from './service/api.js';
 import displayCards from './displayCards.js';
-import { initInputSelectEvent } from "./selectEvent.js";
+import { initInputSelectEvent } from "./SelectEvent.js";
 
 let insertOptionsToCustomList = (options, customMenu, color) => {
     customMenu.innerHTML = '';

@@ -1,7 +1,7 @@
 import Select from './class/Select.js';
 import displayCards from './displayCards.js';
 import { insertOptionsToCustomList, addOptionsToEachSelect, initOptionsEvent } from './options.js';
-import { initInputSelectEvent } from './selectEvent.js';
+import { initInputSelectEvent } from './SelectEvent.js';
 
 /**
  * function that filters the recipes according to the value typed by the user in the input of the main search bar 
