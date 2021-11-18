@@ -61,7 +61,7 @@ let getFiltredRecipes = (recipes, filters, search) => {
         });
         return filtredCards;
     }
-    return cards;
+    return filtredRecipes;
 };
 
 /**
