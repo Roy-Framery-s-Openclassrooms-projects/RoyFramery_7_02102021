@@ -49,10 +49,26 @@ For this project, it was suggested to make a comparison between a native loop (w
 
 ## Installation
 
-💽 Clone repository
+💽 **Les petits plats** requires [Node.js](https://nodejs.org/en/) to run.
+
+Clone repository
 ```sh
 git clone https://github.com/Roy-Framery-s-Openclassrooms-projects/RoyFramery_7_02102021.git
 ```
+
+Install dependencies
+```sh
+npm i
+```
+
+launch the server
+```sh
+npx serve
+```
+
+Reach to your [localhost server](http://localhost:3000) 
+
+
 [Back to the top](#les-petits-plats)
 
 ---
