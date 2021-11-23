@@ -31,7 +31,9 @@ let initTagsEvent = (optionsArray) => {
         // To get new recipes
         const searchValue = document.querySelector('.search__input').value;
         let filtredRecipes = getFiltredRecipes(recipesData, optionsArray, searchValue);
-
+        addOptionsToEachSelect(filtredRecipes);
+        initOptionsEvent();
+        
         if (optionsArray == 0) {
             filtredRecipes = getFiltredRecipes(recipesData, optionsArray, searchValue);
             addOptionsToEachSelect(filtredRecipes);

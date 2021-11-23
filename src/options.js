@@ -57,7 +57,6 @@ let initOptionsEvent = () => {
         
         // to init options
         initOptionsEvent();
-
         // To init input search of select
         initInputSelectEvent(recipes);
     }));
